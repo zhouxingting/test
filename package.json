@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --mode=development --config webpack.dev.js",
     "build": "webpack --progress --color --mode=production --config webpack.prod.js",
     "serve": "./node_modules/.bin/browser-sync start --server --no-notify --files='index.html,*.css,*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged"
   },
   "author": "",
   "license": "ISC",
@@ -39,10 +40,7 @@
     }
   },
   "lint-staged": {
-    "**/**.{js,jsx,json}": [
-      "prettier -no-semi --single-quote --trailing-comma es5 --print-width 100 --write",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "browserslist": [
     ">0.2%",
