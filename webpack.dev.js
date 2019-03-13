@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+
+console.log(process.env.NODE_ENV)
 
 module.exports = {
   entry: [
@@ -65,7 +68,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify('production')
+        NODE_ENV: JSON.stringify('development')
       }
     }),
     new webpack.LoaderOptionsPlugin({
@@ -77,9 +80,14 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
+      title: 'Hot Module Replacement',
       filename: 'index.html', 
       template: './test.html', //本地自定义模板
       inject: true | 'body'
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    // 安装库后自动重新构建打包文件
+    new WatchMissingNodeModulesPlugin(path.resolve(__dirname, 'node_modules')),
   ],
 };
