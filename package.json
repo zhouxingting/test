@@ -40,7 +40,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json}": [
+    "js/*.{js,jsx,json}": [
       "prettier -no-semi --single-quote --trailing-comma es5 --print-width 100 --write",
       "git add"
     ],
