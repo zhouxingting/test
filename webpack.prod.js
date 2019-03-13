@@ -16,9 +16,19 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[contenthash:8].chunk.js',
     chunkFilename: 'js/[name].[contenthash:8].chunk.js',
+    devtoolModuleFilenameTemplate: (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
   },
   devtool: 'false',
   mode: 'production',
+  resolve: {
+    // 模块引入时不用带扩展
+    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+    // 创建别名
+    alias: {
+      'react-native': 'react-native-web',
+      js: path.resolve(__dirname, 'js'), // 模块绝对路径
+    },
+  },
   optimization: {
     splitChunks: {
         cacheGroups: {

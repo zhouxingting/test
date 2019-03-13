@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -11,6 +11,19 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].chunk.js',
     chunkFilename: 'js/[name].chunk.js',
+    devtoolModuleFilenameTemplate: info =>
+            path
+              .relative('js', info.absoluteResourcePath)
+              .replace(/\\/g, '/')
+  },
+  resolve: {
+    // 模块引入时不用带扩展
+    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+    // 创建别名
+    alias: {
+      'react-native': 'react-native-web',
+      js: path.resolve(__dirname, 'js'), // 模块绝对路径
+    },
   },
   devtool: 'source-map',
   mode: 'production',
