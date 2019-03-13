@@ -1,8 +1,8 @@
-  (function(){
+(function(){
       function fun1(){
-        alert("it works");
-      }
+      alert("it works");
+    }
 
-      fun1();
-      
-  })()
+    fun1();
+    
+})()
