@@ -40,7 +40,14 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,jsx,json}": [
+      "prettier -no-semi --single-quote --trailing-comma es5 --print-width 100 --write",
+      "git add"
+    ],
+    "*.{css,less}": [
+      "prettier --parser css --write",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
