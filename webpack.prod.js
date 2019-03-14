@@ -9,7 +9,10 @@ rimraf('./dist/', function (err) { // 删除当前目录下的dist
 
 module.exports = {
   entry: {
-    index: './js/alert.js',
+    index: [
+      'promise-polyfill',
+      './js/alert.js'
+    ],
     vendor: ['jquery']
   },
   output: {

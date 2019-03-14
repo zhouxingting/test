@@ -8,6 +8,7 @@ console.log(process.env.NODE_ENV)
 module.exports = {
   entry: [
     require.resolve('react-dev-utils/webpackHotDevClient'),
+    'promise-polyfill',
     './js/alert.js',
   ],
   output: {

@@ -29,6 +29,7 @@
     "lint-staged": "^8.1.5",
     "onchange": "^5.2.0",
     "prettier": "^1.16.4",
+    "promise-polyfill": "^8.1.0",
     "react-dev-utils": "^8.0.0",
     "url-loader": "^1.1.2",
     "webpack-cli": "^3.2.3",
