@@ -5,26 +5,21 @@
  * 第三方模块：shim
  */
 require.config({
-    paths: {
-        "jquery": ["https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js", "js/jquery"],
-        'lodash': ['https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js', 'js/lodash'],
-    
+  paths: {
+    jquery: ['https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js', 'js/jquery'],
+    lodash: ['https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js', 'js/lodash'],
+  },
+  shim: {
+    lodash: {
+      exports: '_',
     },
-    shim: {
-        'lodash': {
-            exports: '_',
-        },
-        "jquery.form": ["jquery"]
-    }
+    'jquery.form': ['jquery'],
+  },
 })
 // 引入内部模块，并在页面上运行脚本文件
-require([
-    'jquery',
-    'lodash',
-   
-], ($, _) => {
-    $(function () {
-        _.each([1, 2, 3], console.log);
-        alert("load finish");
-    });
+require(['jquery', 'lodash'], ($, _) => {
+  $(function() {
+    _.each([1, 2, 3], console.log)
+    alert('load finish')
+  })
 })

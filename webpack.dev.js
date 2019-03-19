@@ -9,7 +9,7 @@ module.exports = {
   entry: [
     require.resolve('react-dev-utils/webpackHotDevClient'),
     'promise-polyfill',
-    './js/alert.js',
+    './js/reactTest.js',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -50,7 +50,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env', "@babel/preset-react"],
             plugins: ["@babel/plugin-transform-runtime"]
           }
         }
@@ -63,6 +63,25 @@ module.exports = {
             limite: 8192
           }
         }]
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 10000,
+          name: 'dist/media/[name].[hash:8].[ext]',
+        },
+      },
+      {
+        // Exclude `js` files to keep "css" loader working as it injects
+        // its runtime that would otherwise processed through "file" loader.
+        // Also exclude `html` and `json` extensions so they get processed
+        // by webpacks internal loaders.
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+        loader: require.resolve('file-loader'),
+        options: {
+          name: 'dist/media/[name].[hash:8].[ext]',
+        },
       },
     ]
   },
