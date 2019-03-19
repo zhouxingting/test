@@ -1,8 +1,7 @@
-(function() {
-  function fun1() {
-    console.log('it worksqqqddddddddddsssssssss');
-    console.log('it worksqqqddddddddddsssssssss');
-    console.log(process.env.NODE_ENV);
-  }
-  fun1();
-})();
+/* @flow */
+function method(x: number, y: string, z: boolean) {
+  // ...
+  console.log(y);
+}
+
+method(3.14, 'hello', true);
