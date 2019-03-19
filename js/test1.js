@@ -18,7 +18,7 @@ define(function(require, exports, module) {
   var a = {
     color: 'black',
     size: 'unisize',
-  }
-  console.log(require, module)
-  module.exports = a
-})
+  };
+  console.log(require, module);
+  module.exports = a;
+});

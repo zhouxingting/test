@@ -8,7 +8,8 @@
     "build": "webpack --progress --color --mode=production --config webpack.prod.js",
     "serve": "./node_modules/.bin/browser-sync start --server --no-notify --files='index.html,*.css,*.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --single-quote --write js/*.{js,jsx,ts,tsx,json,css,scss,md}"
+    "prettier": "prettier --single-quote --write js/*.{js,jsx,ts,tsx,json,css,scss,md}",
+    "analyze": "source-map-explorer dist/js/*.js"
   },
   "author": "",
   "license": "ISC",
@@ -63,5 +64,6 @@
     "not dead",
     "not ie <= 8",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://dev.91zdd.cn"
 }

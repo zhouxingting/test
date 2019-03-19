@@ -4,11 +4,11 @@
  * requirejs是为了模块化，他鼓励在使用脚本时使用module id代替url地址
  */
 define(function(require) {
-  let $ = require('jquery')
-  let data = require('js/test1')
-  console.log($('#spanInfo').text(), data)
+  let $ = require('jquery');
+  let data = require('js/test1');
+  console.log($('#spanInfo').text(), data);
   function fun1() {
-    alert('it works ' + data.color)
+    alert('it works ' + data.color);
   }
-  fun1()
-})
+  fun1();
+});

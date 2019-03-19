@@ -15,11 +15,11 @@ require.config({
     },
     'jquery.form': ['jquery'],
   },
-})
+});
 // 引入内部模块，并在页面上运行脚本文件
 require(['jquery', 'lodash'], ($, _) => {
   $(function() {
-    _.each([1, 2, 3], console.log)
-    alert('load finish')
-  })
-})
+    _.each([1, 2, 3], console.log);
+    alert('load finish');
+  });
+});
