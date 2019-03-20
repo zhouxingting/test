@@ -131,6 +131,7 @@ module.exports = {
               sourceMap: true,
               modifyVars:theme,
               javascriptEnabled: true,
+              paths: [path.resolve(__dirname, 'less')], // 指定编译范围，提高编译速度
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
             }, // compiles Less to CSS
           }
