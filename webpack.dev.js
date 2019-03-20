@@ -158,6 +158,11 @@ module.exports = {
     //   dry: false
     // }),
     // 暴露出去的全局变量，自动加载，而不必模块import或require它们无处不在。
+    // 关联打包出去的vender js文件
+    // new webpack.DllReferencePlugin({
+    //   context : basePath,
+    //   manifest: path.resolve(basePath, 'dll', 'manifest.json')
+    // }),
     new webpack.ProvidePlugin({
       $: 'jquery',
     }),

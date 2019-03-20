@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --mode=development --open --watch --hot --config webpack.dev.js",
     "build": "webpack --progress --color --mode=production --config webpack.prod.js",
     "serve": "./node_modules/.bin/browser-sync start --server --no-notify --files='index.html,*.css,*.js",
+    "dll": "webpack -p --progress --config webpack.dll.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --single-quote --write js/*.{js,jsx,ts,tsx,json,css,scss,md}",
     "analyze": "source-map-explorer dist/js/*.js",
