@@ -4,7 +4,7 @@ import { Icon, Button } from 'antd';
 import style from '../less/test.less';
 console.log(style);
 console.log($('body'));
-console.log(plus);
+// console.log(plus);
 // import { ReactComponent as MessageSvg } from '../img/checkedError.svg';
 const PandaSvg = () => (
   <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
