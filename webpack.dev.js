@@ -106,36 +106,55 @@ module.exports = {
         test: /\.(css)$/,
         exclude: /node_modules/,
         use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
+          loader: 'style-loader'// creates style nodes from JS strings
         }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-          options: {
+          loader: 'css-loader', options: {
             modules: true,
-            localIdentName: '[path][name]__[local]--[hash:base64:5]',
-          }
+            importLoaders: 1,
+            localIdentName: '[name]__[local]--[hash:base64:5]'
+          }, 
         }, 'postcss-loader'],
       },
       {
         test: /\.less$/,
+        include: path.resolve(__dirname, './less'),
         use: [
           {
             loader: 'style-loader'
           }, {
-            loader: 'css-loader', // translates CSS into CommonJS
+            loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
-            }
+              importLoaders: 1,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            },
+          }, 'postcss-loader', {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        include: path.resolve(__dirname, './node_modules'),
+        use: [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+              importLoaders: 1,
+            },
           }, 'postcss-loader', {
             loader: 'less-loader', options: {
               sourceMap: true,
+              modules: true,
               modifyVars:theme,
               javascriptEnabled: true,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
             }, // compiles Less to CSS
           }
         ]
-      }
+      },
     ]
   },
   plugins: [

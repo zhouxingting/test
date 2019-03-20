@@ -2,7 +2,12 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Icon, Button } from 'antd';
 import style from '../less/test.less';
-console.log(style);
+import styles from '../less/test.css';
+// const style = {};
+// const styles = {};
+// import '../less/test.less';
+import '../less/test.css';
+console.log(style, styles);
 console.log($('body'));
 // console.log(plus);
 // import { ReactComponent as MessageSvg } from '../img/checkedError.svg';
@@ -91,10 +96,10 @@ function ReactTest() {
         <Icon type="dribbble" />
         <PandaSvg />
       </div>
-      <a style={{ marginLeft: 8, fontSize: 12 }} className={style.color}>
+      <a style={{ marginLeft: 8, fontSize: 12 }} className={style.color + ' color'}>
         Collapse <Icon type={'up'} />
       </a>
-      <Button>ssss</Button>
+      <Button className={styles.color + ' color'}>ssss</Button>
     </React.Fragment>
   );
 }
