@@ -111,7 +111,7 @@ module.exports = {
           loader: 'css-loader', options: {
             modules: true,
             importLoaders: 1,
-            localIdentName: '[name]--[hash:base64:5]'
+            localIdentName: '[name]__[local]--[hash:base64:5]'
           }, 
         }, 'postcss-loader'],
       },
@@ -126,7 +126,7 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[name]--[hash:base64:5]'
+              localIdentName: '[name]__[local]--[hash:base64:5]'
             },
           }, 'postcss-loader', {
             loader: 'less-loader'
