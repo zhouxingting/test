@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Icon, Button } from 'antd';
 import style from '../less/test.less';
 import styles from '../less/test.css';
-import BasicExample from './router.js';
 // const style = {};
 // const styles = {};
 // import '../less/test.less';
@@ -64,165 +63,43 @@ const MyComponent = React.forwardRef((props, ref) => (
   </div>
 ));
 
-// function Ts(props) {
-//   const [count, setCount] = React.useState(0);
-//   return (
-//     <button ref={props.refs} className="FancyButton" onClick={props.handleClick}>
-//       <div>{props.children}</div>
-//     </button>
-//   )
-// }
-
-class Ts extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.textInput = null;
-
-    this.setTextInputRef = element => {
-      this.textInput = element;
-    };
-
-    this.focusTextInput = () => {
-      // 直接使用原生 API 使 text 输入框获得焦点
-      if (this.textInput) this.textInput.focus();
-    };
-  }
-  showInfo() {
-    console.log('ssssss');
-  }
-  render() {
-    return (
-      <button ref={this.props.ref} className="FancyButton" onClick={this.props.handleClick}>
-        <div>{this.props.children}</div>
-      </button>
-    );
-  }
-}
-
-const FancyButton = React.forwardRef((props, ref) => <Ts ref={ref} {...props} />);
+const FancyButton = React.forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton" onClick={props.handleClick}>
+    <div>{props.children}</div>
+  </button>
+));
 
 // You can now get a ref directly to the DOM button:
-
+const ref = React.createRef();
 const myComponent = React.createRef();
 
-class Tss extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.textInput = null;
-
-    this.setTextInputRef = element => {
-      this.textInput = element;
-    };
-
-    this.focusTextInput = () => {
-      // 直接使用原生 API 使 text 输入框获得焦点
-      if (this.textInput) this.textInput.focus();
-    };
-  }
-  showInfo() {
-    console.log('ssssss');
-  }
-  render() {
-    return (
-      <button ref={this.props.refs} className="FancyButton" onClick={this.props.handleClick}>
-        <div>{this.props.children}</div>
-      </button>
-    );
-  }
-}
-
-class Tsss extends React.Component {
-  componentDidMount() {
-    console.log(this.inputElement, ReactDOM.findDOMNode(this.inputElement));
-  }
-  render() {
-    return (
-      <Tss
-        ref={e => {
-          this.inputElement = e;
-        }}
-      />
-    );
-  }
-}
-
-class Tssss extends React.Component {
-  constructor(props) {
-    super(props);
-    this.inputElement = React.createRef();
-    this.ref = React.createRef();
-    // this.handleClick = this.handleClick.bind(this)
-    this.state = {
-      test: 'aaa',
-    };
-  }
-  componentDidMount() {
-    console.log(this.inputElement);
-  }
-  handleClick() {
-    console.log(this.ref, this.ref.current.showInfo);
-  }
-  render() {
-    return (
-      <div>
-        <FancyButton handleClick={this.handleClick.bind(this)} ref={this.props.ref}>
-          Click me!
-        </FancyButton>
-        <Tss ref={this.inputElement} />
-      </div>
-    );
-  }
-}
-
-function FancyInput(props, ref) {
-  const inputRef = React.useRef();
-  // React.useImperativeHandle(ref, () => ({
-  //   focus: () => {
-  //     inputRef.current.focus();
-  //   }
-  // }));
-  return <Tssss ref={ref} {...props} />;
-}
-
-FancyInput = React.forwardRef(FancyInput);
-
 function ReactTest() {
-  const ref = React.createRef();
-  const fancyInputRef = React.useRef();
   const handleClick = () => {
-    console.log(fancyInputRef.current.handleClick);
-    // fancyInputRef.current.focus()
-    // console.log(ref, ref.current.showInfo);
-    // ReactDOM.render(
-    //   <div className="divider">
-    //     <MyComponent text="sssss" ref={myComponent} />
-    //   </div>,
-    //   document.body
-    // );
-    // setTimeout(() => {
-    //   ReactDOM.unmountComponentAtNode(document.body);
-    // }, 5000);
+    console.log(ReactDOM.findDOMNode(document.getElementById('root')));
+    ReactDOM.render(
+      <div className="divider">
+        <MyComponent text="sssss" ref={myComponent} />
+      </div>,
+      document.body
+    );
+    setTimeout(() => {
+      ReactDOM.unmountComponentAtNode(document.body);
+    }, 5000);
     //    ref.current.innerHTML='sss';
   };
   return (
     <React.Fragment>
-      {/* <FancyButton handleClick={handleClick} ref={ref}>
+      <FancyButton handleClick={handleClick} ref={ref}>
         Click me!
       </FancyButton>
       <div id="test">
         <Icon type="dribbble" />
         <PandaSvg />
       </div>
-      <Tsss />
-      <Tssss />
       <a style={{ marginLeft: 8, fontSize: 12 }} className={style.color + ' color'}>
         Collapse <Icon type={'up'} />
-      </a> */}
-      <FancyInput ref={fancyInputRef} />
-      <Button onClick={handleClick}>ssss</Button>
-      <BasicExample />
+      </a>
+      <Button className={styles.color + ' color'}>ssss</Button>
     </React.Fragment>
   );
 }
