@@ -1,17 +1,28 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon, Button } from 'antd';
+import { Icon, Button, message } from 'antd';
 import style from '../less/test.less';
 import styles from '../less/test.css';
 import BasicExample from './router.js';
 // const style = {};
 // const styles = {};
-// import '../less/test.less';
 import '../less/test.css';
 console.log(style, styles);
 console.log($('body'));
 // console.log(plus);
 // import { ReactComponent as MessageSvg } from '../img/checkedError.svg';
+const hideMessage = message.loading('正在编译主题！', 0);
+window.less
+  .modifyVars({
+    '@primary-color': '#52c41a',
+  })
+  .then(() => {
+    hideMessage();
+  })
+  .catch(() => {
+    message.error('Failed to update theme');
+    hideMessage();
+  });
 const PandaSvg = () => (
   <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
     <path
